@@ -1,0 +1,685 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2603CF4A2F3F331A006245D7 /* My_BrickbookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF492F3F331A006245D7 /* My_BrickbookApp.swift */; };
+		2603CF4C2F3F331A006245D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF4B2F3F331A006245D7 /* ContentView.swift */; };
+		2603CF502F3F331D006245D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2603CF4F2F3F331D006245D7 /* Assets.xcassets */; };
+		2603CF532F3F331D006245D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2603CF522F3F331D006245D7 /* Preview Assets.xcassets */; };
+		2603CF5D2F3F331D006245D7 /* My_BrickbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF5C2F3F331D006245D7 /* My_BrickbookTests.swift */; };
+		2603CF672F3F331D006245D7 /* My_BrickbookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF662F3F331D006245D7 /* My_BrickbookUITests.swift */; };
+		2603CF692F3F331D006245D7 /* My_BrickbookUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF682F3F331D006245D7 /* My_BrickbookUITestsLaunchTests.swift */; };
+		2603CF7A2F3F331A006245D7 /* CollectibleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF792F3F331A006245D7 /* CollectibleCard.swift */; };
+		2603CF7C2F3F331A006245D7 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF7B2F3F331A006245D7 /* Story.swift */; };
+		2603CF7E2F3F331A006245D7 /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF7D2F3F331A006245D7 /* LogEntry.swift */; };
+		2603CF802F3F331A006245D7 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF7F2F3F331A006245D7 /* DataLoader.swift */; };
+		2603CF822F3F331A006245D7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF812F3F331A006245D7 /* AppState.swift */; };
+		2603CF842F3F331A006245D7 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF832F3F331A006245D7 /* AppTheme.swift */; };
+		2603CF862F3F331A006245D7 /* CollectionGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF852F3F331A006245D7 /* CollectionGridView.swift */; };
+		2603CF882F3F331A006245D7 /* CardDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF872F3F331A006245D7 /* CardDetailSheet.swift */; };
+		2603CF8A2F3F331A006245D7 /* AddCardFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF892F3F331A006245D7 /* AddCardFlowView.swift */; };
+		2603CF8C2F3F331A006245D7 /* StoryModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF8B2F3F331A006245D7 /* StoryModalView.swift */; };
+		2603CF8E2F3F331A006245D7 /* LogbookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CF8D2F3F331A006245D7 /* LogbookView.swift */; };
+		2603CF902F3F331A006245D7 /* collectibles.json in Resources */ = {isa = PBXBuildFile; fileRef = 2603CF8F2F3F331A006245D7 /* collectibles.json */; };
+		2603CF922F3F331A006245D7 /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 2603CF912F3F331A006245D7 /* stories.json */; };
+		2603CFA12F3F331A006245D7 /* FloatingCapsuleTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CFA02F3F331A006245D7 /* FloatingCapsuleTabBar.swift */; };
+		2603CFA32F3F331A006245D7 /* FloatingCardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CFA22F3F331A006245D7 /* FloatingCardModal.swift */; };
+		2603CFA52F3F331A006245D7 /* BrickPickerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603CFA42F3F331A006245D7 /* BrickPickerScreen.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2603CF592F3F331D006245D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2603CF3E2F3F331A006245D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2603CF452F3F331A006245D7;
+			remoteInfo = "My Brickbook";
+		};
+		2603CF632F3F331D006245D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2603CF3E2F3F331A006245D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2603CF452F3F331A006245D7;
+			remoteInfo = "My Brickbook";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2603CF462F3F331A006245D7 /* My Brickbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Brickbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2603CF492F3F331A006245D7 /* My_BrickbookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_BrickbookApp.swift; sourceTree = "<group>"; };
+		2603CF4B2F3F331A006245D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2603CF4F2F3F331D006245D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2603CF522F3F331D006245D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2603CF582F3F331D006245D7 /* My BrickbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My BrickbookTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2603CF5C2F3F331D006245D7 /* My_BrickbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_BrickbookTests.swift; sourceTree = "<group>"; };
+		2603CF622F3F331D006245D7 /* My BrickbookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My BrickbookUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2603CF662F3F331D006245D7 /* My_BrickbookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_BrickbookUITests.swift; sourceTree = "<group>"; };
+		2603CF682F3F331D006245D7 /* My_BrickbookUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_BrickbookUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2603CF792F3F331A006245D7 /* CollectibleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleCard.swift; sourceTree = "<group>"; };
+		2603CF7B2F3F331A006245D7 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		2603CF7D2F3F331A006245D7 /* LogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
+		2603CF7F2F3F331A006245D7 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		2603CF812F3F331A006245D7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		2603CF832F3F331A006245D7 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		2603CF852F3F331A006245D7 /* CollectionGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionGridView.swift; sourceTree = "<group>"; };
+		2603CF872F3F331A006245D7 /* CardDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailSheet.swift; sourceTree = "<group>"; };
+		2603CF892F3F331A006245D7 /* AddCardFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardFlowView.swift; sourceTree = "<group>"; };
+		2603CF8B2F3F331A006245D7 /* StoryModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModalView.swift; sourceTree = "<group>"; };
+		2603CF8D2F3F331A006245D7 /* LogbookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogbookView.swift; sourceTree = "<group>"; };
+		2603CF8F2F3F331A006245D7 /* collectibles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = collectibles.json; sourceTree = "<group>"; };
+		2603CF912F3F331A006245D7 /* stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stories.json; sourceTree = "<group>"; };
+		2603CFA02F3F331A006245D7 /* FloatingCapsuleTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCapsuleTabBar.swift; sourceTree = "<group>"; };
+		2603CFA22F3F331A006245D7 /* FloatingCardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCardModal.swift; sourceTree = "<group>"; };
+		2603CFA42F3F331A006245D7 /* BrickPickerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickPickerScreen.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2603CF432F3F331A006245D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2603CF552F3F331D006245D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2603CF5F2F3F331D006245D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2603CF3D2F3F331A006245D7 = {
+			isa = PBXGroup;
+			children = (
+				2603CF482F3F331A006245D7 /* My Brickbook */,
+				2603CF5B2F3F331D006245D7 /* My BrickbookTests */,
+				2603CF652F3F331D006245D7 /* My BrickbookUITests */,
+				2603CF472F3F331A006245D7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2603CF472F3F331A006245D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF462F3F331A006245D7 /* My Brickbook.app */,
+				2603CF582F3F331D006245D7 /* My BrickbookTests.xctest */,
+				2603CF622F3F331D006245D7 /* My BrickbookUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2603CF482F3F331A006245D7 /* My Brickbook */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF492F3F331A006245D7 /* My_BrickbookApp.swift */,
+				2603CF4B2F3F331A006245D7 /* ContentView.swift */,
+				2603CF4F2F3F331D006245D7 /* Assets.xcassets */,
+				2603CF512F3F331D006245D7 /* Preview Content */,
+				2603CF8F2F3F331A006245D7 /* collectibles.json */,
+				2603CF912F3F331A006245D7 /* stories.json */,
+				2603CF932F3F331A006245D7 /* Models */,
+				2603CF952F3F331A006245D7 /* Data */,
+				2603CF972F3F331A006245D7 /* Theme */,
+				2603CF992F3F331A006245D7 /* Views */,
+			);
+			path = "My Brickbook";
+			sourceTree = "<group>";
+		};
+		2603CF512F3F331D006245D7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF522F3F331D006245D7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2603CF5B2F3F331D006245D7 /* My BrickbookTests */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF5C2F3F331D006245D7 /* My_BrickbookTests.swift */,
+			);
+			path = "My BrickbookTests";
+			sourceTree = "<group>";
+		};
+		2603CF652F3F331D006245D7 /* My BrickbookUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF662F3F331D006245D7 /* My_BrickbookUITests.swift */,
+				2603CF682F3F331D006245D7 /* My_BrickbookUITestsLaunchTests.swift */,
+			);
+			path = "My BrickbookUITests";
+			sourceTree = "<group>";
+		};
+		2603CF932F3F331A006245D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF792F3F331A006245D7 /* CollectibleCard.swift */,
+				2603CF7B2F3F331A006245D7 /* Story.swift */,
+				2603CF7D2F3F331A006245D7 /* LogEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2603CF952F3F331A006245D7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF7F2F3F331A006245D7 /* DataLoader.swift */,
+				2603CF812F3F331A006245D7 /* AppState.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2603CF972F3F331A006245D7 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF832F3F331A006245D7 /* AppTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		2603CF992F3F331A006245D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2603CF852F3F331A006245D7 /* CollectionGridView.swift */,
+				2603CF872F3F331A006245D7 /* CardDetailSheet.swift */,
+				2603CF892F3F331A006245D7 /* AddCardFlowView.swift */,
+				2603CFA02F3F331A006245D7 /* FloatingCapsuleTabBar.swift */,
+				2603CFA22F3F331A006245D7 /* FloatingCardModal.swift */,
+				2603CFA42F3F331A006245D7 /* BrickPickerScreen.swift */,
+				2603CF8B2F3F331A006245D7 /* StoryModalView.swift */,
+				2603CF8D2F3F331A006245D7 /* LogbookView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2603CF452F3F331A006245D7 /* My Brickbook */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2603CF6C2F3F331D006245D7 /* Build configuration list for PBXNativeTarget "My Brickbook" */;
+			buildPhases = (
+				2603CF422F3F331A006245D7 /* Sources */,
+				2603CF432F3F331A006245D7 /* Frameworks */,
+				2603CF442F3F331A006245D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "My Brickbook";
+			productName = "My Brickbook";
+			productReference = 2603CF462F3F331A006245D7 /* My Brickbook.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2603CF572F3F331D006245D7 /* My BrickbookTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2603CF6F2F3F331D006245D7 /* Build configuration list for PBXNativeTarget "My BrickbookTests" */;
+			buildPhases = (
+				2603CF542F3F331D006245D7 /* Sources */,
+				2603CF552F3F331D006245D7 /* Frameworks */,
+				2603CF562F3F331D006245D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2603CF5A2F3F331D006245D7 /* PBXTargetDependency */,
+			);
+			name = "My BrickbookTests";
+			productName = "My BrickbookTests";
+			productReference = 2603CF582F3F331D006245D7 /* My BrickbookTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2603CF612F3F331D006245D7 /* My BrickbookUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2603CF722F3F331D006245D7 /* Build configuration list for PBXNativeTarget "My BrickbookUITests" */;
+			buildPhases = (
+				2603CF5E2F3F331D006245D7 /* Sources */,
+				2603CF5F2F3F331D006245D7 /* Frameworks */,
+				2603CF602F3F331D006245D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2603CF642F3F331D006245D7 /* PBXTargetDependency */,
+			);
+			name = "My BrickbookUITests";
+			productName = "My BrickbookUITests";
+			productReference = 2603CF622F3F331D006245D7 /* My BrickbookUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2603CF3E2F3F331A006245D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					2603CF452F3F331A006245D7 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					2603CF572F3F331D006245D7 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 2603CF452F3F331A006245D7;
+					};
+					2603CF612F3F331D006245D7 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 2603CF452F3F331A006245D7;
+					};
+				};
+			};
+			buildConfigurationList = 2603CF412F3F331A006245D7 /* Build configuration list for PBXProject "My Brickbook" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2603CF3D2F3F331A006245D7;
+			productRefGroup = 2603CF472F3F331A006245D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2603CF452F3F331A006245D7 /* My Brickbook */,
+				2603CF572F3F331D006245D7 /* My BrickbookTests */,
+				2603CF612F3F331D006245D7 /* My BrickbookUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2603CF442F3F331A006245D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2603CF532F3F331D006245D7 /* Preview Assets.xcassets in Resources */,
+				2603CF502F3F331D006245D7 /* Assets.xcassets in Resources */,
+				2603CF902F3F331A006245D7 /* collectibles.json in Resources */,
+				2603CF922F3F331A006245D7 /* stories.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2603CF562F3F331D006245D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2603CF602F3F331D006245D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2603CF422F3F331A006245D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2603CF4C2F3F331A006245D7 /* ContentView.swift in Sources */,
+				2603CF4A2F3F331A006245D7 /* My_BrickbookApp.swift in Sources */,
+				2603CF7A2F3F331A006245D7 /* CollectibleCard.swift in Sources */,
+				2603CF7C2F3F331A006245D7 /* Story.swift in Sources */,
+				2603CF7E2F3F331A006245D7 /* LogEntry.swift in Sources */,
+				2603CF802F3F331A006245D7 /* DataLoader.swift in Sources */,
+				2603CF822F3F331A006245D7 /* AppState.swift in Sources */,
+				2603CF842F3F331A006245D7 /* AppTheme.swift in Sources */,
+				2603CF862F3F331A006245D7 /* CollectionGridView.swift in Sources */,
+				2603CF882F3F331A006245D7 /* CardDetailSheet.swift in Sources */,
+				2603CF8A2F3F331A006245D7 /* AddCardFlowView.swift in Sources */,
+				2603CF8C2F3F331A006245D7 /* StoryModalView.swift in Sources */,
+				2603CF8E2F3F331A006245D7 /* LogbookView.swift in Sources */,
+				2603CFA12F3F331A006245D7 /* FloatingCapsuleTabBar.swift in Sources */,
+				2603CFA32F3F331A006245D7 /* FloatingCardModal.swift in Sources */,
+				2603CFA52F3F331A006245D7 /* BrickPickerScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2603CF542F3F331D006245D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2603CF5D2F3F331D006245D7 /* My_BrickbookTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2603CF5E2F3F331D006245D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2603CF672F3F331D006245D7 /* My_BrickbookUITests.swift in Sources */,
+				2603CF692F3F331D006245D7 /* My_BrickbookUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2603CF5A2F3F331D006245D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2603CF452F3F331A006245D7 /* My Brickbook */;
+			targetProxy = 2603CF592F3F331D006245D7 /* PBXContainerItemProxy */;
+		};
+		2603CF642F3F331D006245D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2603CF452F3F331A006245D7 /* My Brickbook */;
+			targetProxy = 2603CF632F3F331D006245D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2603CF6A2F3F331D006245D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2603CF6B2F3F331D006245D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2603CF6D2F3F331D006245D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"My Brickbook/Preview Content\"";
+				DEVELOPMENT_TEAM = VQZABVSTHY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-23.My-Brickbook";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2603CF6E2F3F331D006245D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"My Brickbook/Preview Content\"";
+				DEVELOPMENT_TEAM = VQZABVSTHY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-23.My-Brickbook";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2603CF702F3F331D006245D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-23.My-BrickbookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/My Brickbook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/My Brickbook";
+			};
+			name = Debug;
+		};
+		2603CF712F3F331D006245D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-23.My-BrickbookTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/My Brickbook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/My Brickbook";
+			};
+			name = Release;
+		};
+		2603CF732F3F331D006245D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-23.My-BrickbookUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "My Brickbook";
+			};
+			name = Debug;
+		};
+		2603CF742F3F331D006245D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-23.My-BrickbookUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "My Brickbook";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2603CF412F3F331A006245D7 /* Build configuration list for PBXProject "My Brickbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2603CF6A2F3F331D006245D7 /* Debug */,
+				2603CF6B2F3F331D006245D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2603CF6C2F3F331D006245D7 /* Build configuration list for PBXNativeTarget "My Brickbook" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2603CF6D2F3F331D006245D7 /* Debug */,
+				2603CF6E2F3F331D006245D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2603CF6F2F3F331D006245D7 /* Build configuration list for PBXNativeTarget "My BrickbookTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2603CF702F3F331D006245D7 /* Debug */,
+				2603CF712F3F331D006245D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2603CF722F3F331D006245D7 /* Build configuration list for PBXNativeTarget "My BrickbookUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2603CF732F3F331D006245D7 /* Debug */,
+				2603CF742F3F331D006245D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2603CF3E2F3F331A006245D7 /* Project object */;
+}
