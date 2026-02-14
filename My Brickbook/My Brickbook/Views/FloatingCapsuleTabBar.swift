@@ -39,8 +39,13 @@ struct FloatingCapsuleTabBar: View {
         .padding(.vertical, 12)
         .background(
             Capsule()
-                .fill(AppTheme.cream)
-                .shadow(color: AppTheme.shadowSoft, radius: 20, x: 0, y: 8)
+                .fill(Color.white)
+                .overlay(
+                    Capsule()
+                        .stroke(AppTheme.sageLight.opacity(0.85), lineWidth: 1)
+                )
+                .shadow(color: Color.black.opacity(0.1), radius: 16, x: 0, y: 6)
+                .shadow(color: AppTheme.shadowCard.opacity(0.5), radius: 8, x: 0, y: 2)
         )
         .padding(.horizontal, 24)
     }

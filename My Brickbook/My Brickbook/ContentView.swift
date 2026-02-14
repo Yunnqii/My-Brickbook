@@ -26,19 +26,10 @@ struct ContentView: View {
                             cards: appState.homeCards,
                             title: "Collection",
                             progressText: "Collected \(appState.ownedCardIds.filter { appState.card(byId: $0)?.isHome == true }.count) / 40",
-                            storyOverlayVisible: $collectionStoryOverlayVisible
+                            storyOverlayVisible: $collectionStoryOverlayVisible,
+                            onAddTapped: { showAddModal = true },
+                            showAddButton: !collectionStoryOverlayVisible
                         )
-                        .toolbar {
-                            if !collectionStoryOverlayVisible {
-                                ToolbarItem(placement: .primaryAction) {
-                                    Button { showAddModal = true } label: {
-                                        Image(systemName: "plus.circle.fill")
-                                            .font(.system(size: 28))
-                                            .foregroundStyle(AppTheme.sage)
-                                    }
-                                }
-                            }
-                        }
                         .toolbarBackground(.hidden, for: .navigationBar)
                     }
 
@@ -48,32 +39,15 @@ struct ContentView: View {
                             appState: appState,
                             cards: appState.familyCards,
                             title: "Family",
-                            progressText: "Collected \(appState.ownedCardIds.filter { appState.card(byId: $0)?.isFamily == true }.count) / 8"
+                            progressText: "Collected \(appState.ownedCardIds.filter { appState.card(byId: $0)?.isFamily == true }.count) / 8",
+                            onAddTapped: { showAddModal = true }
                         )
-                        .toolbar {
-                            ToolbarItem(placement: .primaryAction) {
-                                Button { showAddModal = true } label: {
-                                    Image(systemName: "plus.circle.fill")
-                                        .font(.system(size: 28))
-                                        .foregroundStyle(AppTheme.sage)
-                                }
-                            }
-                        }
                         .toolbarBackground(.hidden, for: .navigationBar)
                     }
 
                 case 2:
                     NavigationStack {
                         LogbookView(appState: appState)
-                            .toolbar {
-                                ToolbarItem(placement: .primaryAction) {
-                                    Button { showAddModal = true } label: {
-                                        Image(systemName: "plus.circle.fill")
-                                            .font(.system(size: 28))
-                                            .foregroundStyle(AppTheme.sage)
-                                    }
-                                }
-                            }
                             .toolbarBackground(.hidden, for: .navigationBar)
                     }
 

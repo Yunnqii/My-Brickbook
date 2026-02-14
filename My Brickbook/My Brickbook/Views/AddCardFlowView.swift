@@ -170,6 +170,7 @@ struct AddCardFlowView: View {
             return
         }
         if let relatedStory = appState.stories.first(where: { $0.trigger_cards.contains(card.id) }) {
+            appState.ensureLogEntry(storyId: relatedStory.id, triggeredByCardId: card.id)
             storyTriggerCard = card
             storyToPresent = relatedStory
             return

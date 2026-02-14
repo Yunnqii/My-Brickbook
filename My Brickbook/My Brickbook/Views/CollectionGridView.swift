@@ -12,10 +12,13 @@ struct CollectionGridView: View {
     @State private var selectedCard: CollectibleCard?
     @State private var storyToShow: Story?
     @State private var storyTriggerCard: CollectibleCard?
+    @State private var pendingStoryAfterSheetDismiss: (Story, CollectibleCard)?
     let cards: [CollectibleCard]
     let title: String
     let progressText: String
     var storyOverlayVisible: Binding<Bool>?
+    var onAddTapped: (() -> Void)?
+    var showAddButton: Bool = true
 
     private let columns = Array(repeating: GridItem(.flexible(minimum: 96), spacing: 16), count: 3)
 
@@ -24,13 +27,17 @@ struct CollectionGridView: View {
         cards: [CollectibleCard],
         title: String,
         progressText: String,
-        storyOverlayVisible: Binding<Bool>? = nil
+        storyOverlayVisible: Binding<Bool>? = nil,
+        onAddTapped: (() -> Void)? = nil,
+        showAddButton: Bool = true
     ) {
         self.appState = appState
         self.cards = cards
         self.title = title
         self.progressText = progressText
         self.storyOverlayVisible = storyOverlayVisible
+        self.onAddTapped = onAddTapped
+        self.showAddButton = showAddButton
         _selectedCard = State(initialValue: nil)
         _storyToShow = State(initialValue: nil)
         _storyTriggerCard = State(initialValue: nil)
@@ -39,22 +46,34 @@ struct CollectionGridView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                // Hero header: small title + editorial progress
-                VStack(alignment: .leading, spacing: 6) {
-                    Text(title)
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundStyle(AppTheme.textSecondary)
-                        .textCase(.uppercase)
-                        .tracking(0.6)
+                // Hero header: title + progress on left; add button on same row when provided
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(title)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .textCase(.uppercase)
+                            .tracking(0.6)
 
-                    Text(progressText)
-                        .font(.system(size: 28, weight: .light, design: .rounded))
-                        .foregroundStyle(AppTheme.textPrimary)
+                        Text(progressText)
+                            .font(.system(size: 28, weight: .light, design: .rounded))
+                            .foregroundStyle(AppTheme.textPrimary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                    if let onAdd = onAddTapped, showAddButton {
+                        Button(action: onAdd) {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.system(size: 30))
+                                .foregroundStyle(AppTheme.sage)
+                                .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 24)
-                .padding(.top, 20)
+                .padding(.top, 52)
                 .padding(.bottom, 28)
 
                 // Grid: large airy spacing, 3 columns
@@ -74,15 +93,22 @@ struct CollectionGridView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .background(AppTheme.cream)
-        .sheet(item: $selectedCard) { card in
+        .background(Color(hex: "F8F5F1")) // match Logbook page background
+        .sheet(item: $selectedCard, onDismiss: {
+            let pending = pendingStoryAfterSheetDismiss
+            pendingStoryAfterSheetDismiss = nil
+            guard let p = pending else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                storyToShow = p.0
+                storyTriggerCard = p.1
+                storyOverlayVisible?.wrappedValue = true
+            }
+        }) { card in
             CardDetailSheet(
                 card: card,
                 appState: appState,
                 onStoryUnlocked: { story, triggerCard in
-                    storyToShow = story
-                    storyTriggerCard = triggerCard
-                    storyOverlayVisible?.wrappedValue = true
+                    pendingStoryAfterSheetDismiss = (story, triggerCard)
                 }
             )
         }
@@ -91,6 +117,7 @@ struct CollectionGridView: View {
                 ZStack {
                     Color.black.opacity(0.5)
                         .ignoresSafeArea()
+                        .contentShape(Rectangle())
                     StoryUnlockedOverlayView(
                         story: story,
                         triggerCard: storyTriggerCard,
@@ -101,6 +128,8 @@ struct CollectionGridView: View {
                         }
                     )
                 }
+                .allowsHitTesting(true)
+                .zIndex(100)
                 .animation(.spring(response: 0.3, dampingFraction: 0.8), value: storyToShow != nil)
             }
         }
@@ -118,53 +147,42 @@ struct CardGridCell: View {
     var body: some View {
         Button(action: action) {
             VStack(spacing: 8) {
-                ZStack(alignment: .topTrailing) {
-                    ZStack(alignment: .topLeading) {
-                        // Card face: no border; filled shape only
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(isOwned ? AppTheme.sageSubtle : AppTheme.creamWarm)
-                            .overlay(
-                                Group {
-                                    if isOwned {
-                                        cardIcon
-                                    } else {
-                                        Text("?")
-                                            .font(.system(size: 26, weight: .light, design: .rounded))
-                                            .foregroundStyle(AppTheme.cardLockedAccent)
-                                    }
+                ZStack(alignment: .topLeading) {
+                    // Card face: no border; filled shape only
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(isOwned ? AppTheme.sageSubtle : AppTheme.creamWarm)
+                        .overlay(
+                            Group {
+                                if isOwned {
+                                    cardIcon
+                                } else {
+                                    Text("?")
+                                        .font(.system(size: 26, weight: .light, design: .rounded))
+                                        .foregroundStyle(AppTheme.cardLockedAccent)
                                 }
-                            )
-                            .aspectRatio(1, contentMode: .fit)
-                            .layoutPriority(1)
-                            .shadow(
-                                color: isOwned ? AppTheme.shadowCard : .clear,
-                                radius: isOwned ? 12 : 0,
-                                x: 0,
-                                y: 4
-                            )
-
-                        // Count badge (top-left), no border
-                        if ownedCount > 0 {
-                            Text("\(ownedCount)")
-                                .font(.system(size: 11, weight: .semibold, design: .rounded))
-                                .foregroundStyle(AppTheme.sage)
-                                .frame(minWidth: 20, minHeight: 20)
-                                .background(Capsule().fill(AppTheme.cream))
-                                .shadow(color: AppTheme.shadowSubtle, radius: 4, x: 0, y: 2)
-                                .padding(8)
-                        }
-                    }
-
-                    // Card number (top-right), soft pill
-                    Text("\(card.number)")
-                        .font(.system(size: 10, weight: .semibold, design: .rounded))
-                        .foregroundStyle(isOwned ? AppTheme.sage : AppTheme.textTertiary)
-                        .frame(width: 20, height: 20)
-                        .background(Circle().fill(AppTheme.cream))
-                        .shadow(color: AppTheme.shadowSubtle, radius: 2, x: 0, y: 1)
-                        .padding(8)
+                            }
+                        )
+                        .aspectRatio(1, contentMode: .fit)
+                        .layoutPriority(1)
+                        .shadow(
+                            color: isOwned ? AppTheme.shadowCard : .clear,
+                            radius: isOwned ? 12 : 0,
+                            x: 0,
+                            y: 4
+                        )
                 }
                 .frame(maxWidth: .infinity)
+                .overlay(alignment: .topLeading) {
+                    if ownedCount > 0 {
+                        Text("\(ownedCount)")
+                            .font(.system(size: 11, weight: .semibold, design: .rounded))
+                            .foregroundStyle(AppTheme.sage)
+                            .frame(minWidth: 20, minHeight: 20)
+                            .background(Capsule().fill(AppTheme.cream))
+                            .shadow(color: AppTheme.shadowSubtle, radius: 4, x: 0, y: 2)
+                            .offset(x: -5, y: -5)
+                    }
+                }
 
                 // Editorial typography: name + tagline
                 VStack(spacing: 2) {
@@ -197,8 +215,13 @@ struct CardGridCell: View {
     @ViewBuilder
     private var cardIcon: some View {
         Group {
-            if card.number == 9 {
-                Image("Microwave")
+            if card.isFamily, (1...8).contains(card.number) {
+                Image("Person\(card.number)")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if card.isHome, (9...40).contains(card.number) {
+                Image("Card\(card.number)")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

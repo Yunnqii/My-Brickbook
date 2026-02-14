@@ -24,7 +24,8 @@ struct LogbookView: View {
     private let filterOptions = ["All", "Maya", "Leo", "Finn", "Laura", "Joy", "Pets", "Garden", "Kitchen", "Pantry"]
 
     private var filteredEntries: [LogEntry] {
-        var entries = appState.logEntries
+        let ownedIds = appState.ownedCardIds
+        var entries = appState.logEntries.filter { ownedIds.contains($0.triggeredByCardId) }
         if !searchText.isEmpty {
             let q = searchText.lowercased()
             entries = entries.filter { entry in
@@ -48,18 +49,23 @@ struct LogbookView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                // Header
+                // Header (match Collection/Family: uppercase label + editorial line)
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Logbook")
-                        .font(.system(size: 34, weight: .bold, design: .rounded))
-                        .foregroundStyle(LogbookStyle.textPrimary)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundStyle(AppTheme.textSecondary)
+                        .textCase(.uppercase)
+                        .tracking(0.6)
+
                     Text("A tiny record of your home stories.")
-                        .font(.system(size: 16, weight: .regular, design: .rounded))
-                        .foregroundStyle(LogbookStyle.textSecondary)
+                        .font(.system(size: 28, weight: .light, design: .rounded))
+                        .foregroundStyle(AppTheme.textPrimary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 24)
-                .padding(.bottom, 20)
+                .padding(.top, 20)
+                .padding(.bottom, 28)
 
                 // Search bar
                 HStack(spacing: 10) {

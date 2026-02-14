@@ -22,54 +22,32 @@ private enum DetailTheme {
     static let shadowCard = Color.black.opacity(0.06)
 }
 
-// MARK: - Hero (260pt, gradient, material, glow, bottom radius 44)
+// MARK: - Hero (single enlarged card with image, no outer panel)
 
 private struct DetailHeroView: View {
     let iconName: String
     var customImageName: String? = nil
 
     var body: some View {
-        ZStack {
-            LinearGradient(
-                colors: [DetailTheme.cream, DetailTheme.paleSage],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .overlay {
-                RadialGradient(
-                    colors: [DetailTheme.sageMuted.opacity(0.25), .clear],
-                    center: .center,
-                    startRadius: 20,
-                    endRadius: 120
-                )
-            }
-            .overlay {
-                Rectangle()
-                    .fill(.ultraThinMaterial.opacity(0.35))
-                    .allowsHitTesting(false)
-            }
-
-            DetailIconBadge(iconName: iconName, customImageName: customImageName)
-        }
-        .frame(height: 260)
-        .clipShape(
-            UnevenRoundedRectangle(
-                bottomLeadingRadius: 44,
-                bottomTrailingRadius: 44
-            )
-        )
+        DetailIconBadge(iconName: iconName, customImageName: customImageName)
+            .padding(.top, 20)
+            .padding(.bottom, 24)
     }
 }
 
-// MARK: - Icon badge (80x80, embossed, gradient, inner + outer shadow)
+// MARK: - Icon badge (enlarged 160pt card; image has inner gap, same style for all)
 
 private struct DetailIconBadge: View {
+    static let badgeSize: CGFloat = 176
+    static let cornerRadius: CGFloat = 34
+    static let imageInset: CGFloat = 2
+
     let iconName: String
     var customImageName: String? = nil
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 24)
+            RoundedRectangle(cornerRadius: Self.cornerRadius)
                 .fill(
                     LinearGradient(
                         colors: [DetailTheme.sageLight, DetailTheme.sageLight.opacity(0.85)],
@@ -78,7 +56,7 @@ private struct DetailIconBadge: View {
                     )
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 24)
+                    RoundedRectangle(cornerRadius: Self.cornerRadius)
                         .stroke(Color.white.opacity(0.6), lineWidth: 1)
                         .blur(radius: 0.5)
                 )
@@ -90,14 +68,16 @@ private struct DetailIconBadge: View {
                 Image(name)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 80, height: 80)
+                    .frame(maxWidth: Self.badgeSize - Self.imageInset * 2, maxHeight: Self.badgeSize - Self.imageInset * 2)
+                    .padding(Self.imageInset)
+                    .frame(width: Self.badgeSize, height: Self.badgeSize)
             } else {
                 Image(systemName: iconName)
-                    .font(.system(size: 36, weight: .light))
+                    .font(.system(size: 64, weight: .light))
                     .foregroundStyle(DetailTheme.sageMuted)
             }
         }
-        .frame(width: 80, height: 80)
+        .frame(width: Self.badgeSize, height: Self.badgeSize)
     }
 }
 
@@ -109,7 +89,7 @@ private struct DetailTitleStack: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("#\(card.number) • \(card.isFamily ? "Family" : "Home")")
+            Text("#\(card.number)")
                 .font(.system(size: 12, weight: .medium, design: .rounded))
                 .foregroundStyle(DetailTheme.sageMuted)
                 .padding(.horizontal, 10)
@@ -130,46 +110,28 @@ private struct DetailTitleStack: View {
     }
 }
 
-// MARK: - Floating content card (white, 24 radius, description + related + metadata)
+// MARK: - Floating info card (number + owned count)
 
 private struct DetailFloatingCard: View {
-    let description: String
-    let relatedCount: Int
-    let category: String
     let cardNumber: Int
     let ownedCount: Int
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text(description)
-                .font(.system(size: 15, weight: .regular, design: .rounded))
-                .foregroundStyle(DetailTheme.textSecondary)
-                .lineSpacing(4)
+        HStack(spacing: 20) {
+            Text("#\(cardNumber)")
+                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                .foregroundStyle(DetailTheme.sageMuted)
 
-            if relatedCount > 0 {
-                HStack(spacing: 6) {
-                    Text("🌿")
-                    Text("\(relatedCount) unlocked")
-                        .font(.system(size: 13, weight: .medium, design: .rounded))
-                        .foregroundStyle(DetailTheme.sageMuted)
-                }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(Capsule().fill(DetailTheme.sageLight.opacity(0.6)))
+            HStack(spacing: 6) {
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 14))
+                Text("Owned · \(ownedCount)")
+                    .font(.system(size: 14, weight: .medium, design: .rounded))
             }
-
-            HStack(spacing: 16) {
-                Label(category, systemImage: "folder")
-                Label("#\(cardNumber)", systemImage: "number")
-                if ownedCount > 0 {
-                    Label("Owned · \(ownedCount)", systemImage: "checkmark.circle")
-                }
-            }
-            .font(.system(size: 12, weight: .medium, design: .rounded))
             .foregroundStyle(DetailTheme.textSecondary)
         }
-        .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(20)
         .background(
             RoundedRectangle(cornerRadius: 24)
                 .fill(.white)
@@ -246,30 +208,12 @@ struct CardDetailSheet: View {
     var onStoryUnlocked: ((Story, CollectibleCard) -> Void)?
     @Environment(\.dismiss) private var dismiss
 
-    private var relatedStoriesCount: Int {
-        appState.stories.filter { $0.trigger_cards.contains(card.id) }.count
-    }
-
-    private var unlockedCount: Int {
-        appState.stories.filter { s in
-            s.trigger_cards.contains(card.id) && appState.unlockedStoryIds.contains(s.id)
-        }.count
-    }
-
-    /// Floating card body: do not repeat tagline (shown in title stack). Use generic or family bio only.
-    private var descriptionText: String {
-        if !card.tagline.isEmpty {
-            return "Add this brick to your home and unlock little moments."
-        }
-        if card.isFamily, let bio = familyBio(for: card.name) { return bio }
-        return "Add this brick to your home and unlock little moments."
-    }
-
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    DetailHeroView(iconName: iconName(for: card), customImageName: card.number == 9 ? "Microwave" : nil)
+                    DetailHeroView(iconName: iconName(for: card), customImageName: cardImageName(for: card))
+                        .frame(maxWidth: .infinity)
                         .padding(.horizontal, 24)
                         .padding(.top, 8)
 
@@ -282,9 +226,6 @@ struct CardDetailSheet: View {
                         .padding(.top, 20)
 
                         DetailFloatingCard(
-                            description: descriptionText,
-                            relatedCount: unlockedCount,
-                            category: card.isFamily ? "Family" : "Home",
                             cardNumber: card.number,
                             ownedCount: appState.ownedCount(for: card.id)
                         )
@@ -326,11 +267,18 @@ struct CardDetailSheet: View {
             return
         }
         if let relatedStory = appState.stories.first(where: { $0.trigger_cards.contains(card.id) }) {
+            appState.ensureLogEntry(storyId: relatedStory.id, triggeredByCardId: card.id)
             onStoryUnlocked?(relatedStory, card)
             dismiss()
             return
         }
         dismiss()
+    }
+
+    private func cardImageName(for card: CollectibleCard) -> String? {
+        if card.isFamily, (1...8).contains(card.number) { return "Person\(card.number)" }
+        if card.isHome, (9...40).contains(card.number) { return "Card\(card.number)" }
+        return nil
     }
 
     private func iconName(for card: CollectibleCard) -> String {

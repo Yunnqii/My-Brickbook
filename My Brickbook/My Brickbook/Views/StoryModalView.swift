@@ -82,12 +82,14 @@ struct StoryUnlockedOverlayView: View {
                     .foregroundStyle(AppTheme.muted)
             }
 
-            Button("Got it!") {
-                onDone()
+            Button(action: onDone) {
+                Text("Got it!")
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .frame(minHeight: 52)
+                    .contentShape(Rectangle())
             }
-            .fontWeight(.semibold)
-            .frame(maxWidth: .infinity)
-            .padding()
+            .buttonStyle(.plain)
             .background(AppTheme.softGreen)
             .foregroundStyle(.white)
             .clipShape(RoundedRectangle(cornerRadius: 12))

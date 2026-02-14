@@ -65,6 +65,12 @@ final class AppState {
            let decoded = try? JSONDecoder().decode([LogEntry].self, from: data) {
             _logEntries = decoded
         }
+        // Keep log entries only for cards still owned (sync with Collection/Family)
+        let owned = ownedCardIds
+        let validEntries = _logEntries.filter { owned.contains($0.triggeredByCardId) }
+        if validEntries.count != _logEntries.count {
+            logEntries = validEntries
+        }
     }
 
     /// 当前拥有该卡牌的数量（用于角标显示）
@@ -126,6 +132,8 @@ final class AppState {
         let current = _ownedCardCounts[cardId] ?? 0
         if current <= 1 {
             _ownedCardCounts.removeValue(forKey: cardId)
+            // When card is fully removed, clear any Logbook entries triggered by this card
+            logEntries = logEntries.filter { $0.triggeredByCardId != cardId }
         } else {
             _ownedCardCounts[cardId] = current - 1
         }
@@ -141,5 +149,13 @@ final class AppState {
 
     func logEntry(for storyId: String) -> LogEntry? {
         logEntries.first { $0.storyId == storyId }
+    }
+
+    /// Ensure a log entry exists when we show the story overlay (e.g. fallback “related” story), so it appears in Logbook.
+    func ensureLogEntry(storyId: String, triggeredByCardId: String) {
+        guard logEntries.first(where: { $0.storyId == storyId }) == nil else { return }
+        var entries = logEntries
+        entries.insert(LogEntry(storyId: storyId, triggeredByCardId: triggeredByCardId, date: Date()), at: 0)
+        logEntries = entries
     }
 }

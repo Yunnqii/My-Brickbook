@@ -109,26 +109,35 @@ struct BrickCardView: View {
             onTap()
         }) {
             VStack(alignment: .leading, spacing: 0) {
+                // Flexible space so image block sits in center above text
+                Spacer(minLength: 6)
+
+                // Image area: vertically centered in card (number/checkmark overlaid)
                 ZStack(alignment: .topLeading) {
                     ZStack(alignment: .topTrailing) {
-                        // Center: icon
                         Group {
-                            if card.number == 9 {
-                                Image("Microwave")
+                            if card.isFamily, (1...8).contains(card.number) {
+                                Image("Person\(card.number)")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxWidth: .infinity)
-                                    .frame(height: 56)
+                                    .frame(height: 88)
+                            } else if card.isHome, (9...40).contains(card.number) {
+                                Image("Card\(card.number)")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 88)
                             } else {
                                 Image(systemName: iconName(for: card))
                                     .font(.system(size: 28, weight: .light))
                                     .foregroundStyle(isCollected ? PickerTheme.sage : PickerTheme.sage.opacity(0.8))
+                                    .frame(height: 88)
                             }
                         }
                         .frame(maxWidth: .infinity)
-                        .frame(height: 56)
+                        .frame(height: 88)
 
-                        // Top-right: checkmark when collected
                         if isCollected {
                             Image(systemName: "checkmark.circle.fill")
                                 .font(.system(size: 22))
@@ -137,7 +146,6 @@ struct BrickCardView: View {
                         }
                     }
 
-                    // Top-left: number capsule
                     Text("\(card.number)")
                         .font(.system(size: 11, weight: .semibold, design: .rounded))
                         .foregroundStyle(PickerTheme.sage)
@@ -146,13 +154,18 @@ struct BrickCardView: View {
                         .background(Capsule().fill(PickerTheme.selectedTint.opacity(0.9)))
                         .padding(10)
                 }
+                .frame(maxWidth: .infinity)
+                .frame(height: 88)
 
+                Spacer(minLength: 6)
+
+                // Text block at bottom (name, tagline, action)
                 Text(card.name)
                     .font(.system(size: 15, weight: .medium, design: .rounded))
                     .foregroundStyle(PickerTheme.textPrimary)
                     .lineLimit(2)
                     .padding(.horizontal, 12)
-                    .padding(.top, 8)
+                    .padding(.top, 6)
 
                 if !card.tagline.isEmpty {
                     Text(card.tagline)
@@ -163,16 +176,15 @@ struct BrickCardView: View {
                         .padding(.top, 2)
                 }
 
-                Spacer(minLength: 8)
-
                 Text(isCollected ? "Collected" : "+ Add")
                     .font(.system(size: 12, weight: .semibold, design: .rounded))
                     .foregroundStyle(isCollected ? PickerTheme.sage : PickerTheme.sage)
                     .padding(.horizontal, 12)
+                    .padding(.top, 6)
                     .padding(.bottom, 12)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .frame(minHeight: 180)
+            .frame(minHeight: 200)
             .background(
                 RoundedRectangle(cornerRadius: 24)
                     .fill(
